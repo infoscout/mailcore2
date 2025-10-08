@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xcodebuild:*)",
+      "Bash(lipo:*)",
+      "Bash(./scripts/build-mailcore2-xcframework-spm.sh:*)",
+      "Bash(wait)",
+      "Bash(build_for_external=1 ./build-libetpan-ios.sh)",
+      "Bash(./get-ios.sh:*)",
+      "Read(//Users/vik.denic/Documents/**)",
+      "Bash(./scripts/build-mailcore2-xcframework.sh:*)",
+      "Bash(tee:*)",
+      "Read(//Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include/**)",
+      "Bash(unzip:*)",
+      "Bash(NOBITCODE=1 build_for_external=1 ./build-libetpan-ios.sh)",
+      "Bash(export NOBITCODE=1)",
+      "Bash(export build_for_external=1)",
+      "Bash(./build-libetpan-ios.sh:*)",
+      "Bash(cat:*)",
+      "Bash(git submodule:*)",
+      "Bash(curl:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(./scripts/get-ios.sh:*)",
+      "Bash(./build-arm64-xcframework.sh:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

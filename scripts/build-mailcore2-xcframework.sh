@@ -12,13 +12,13 @@ rm -rf "$BUILD_DIR/$FRAMEWORK_NAME"
 
 cd build-mac
 
-# Build Mac Archive
-xcodebuild archive -scheme "mailcore osx" \
-    -arch "x86_64" \
-    -archivePath "$BUILD_DIR/mailcore2.macOS.xcarchive" \
-    SKIP_INSTALL=NO \
-    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-    
+# Build Mac Archive - SKIPPED (not needed for iOS-only XCFramework)
+# xcodebuild archive -scheme "mailcore osx" \
+#     -arch "x86_64" \
+#     -archivePath "$BUILD_DIR/mailcore2.macOS.xcarchive" \
+#     SKIP_INSTALL=NO \
+#     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+
 # Build iOS Archive
 xcodebuild archive -scheme "mailcore ios" \
     -destination "generic/platform=iOS" \
@@ -29,9 +29,9 @@ xcodebuild archive -scheme "mailcore ios" \
 
 # Build iOS Simulator Archive
 xcodebuild archive -scheme "mailcore ios" \
-    -arch "x86_64" \
     -archivePath "$BUILD_DIR/mailcore2.iOS-Simulator.xcarchive" \
     -sdk iphonesimulator \
+    ARCHS="x86_64 arm64" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
@@ -45,9 +45,8 @@ xcodebuild archive -scheme "mailcore ios" \
 
 cd $BUILD_DIR
 
-# Create Combined XCArchive - REMOVE ONCE MAC CATALYST BUILDING IS FIXED
+# Create iOS-only XCFramework (Device + Simulator)
 xcodebuild -create-xcframework \
-	-framework "mailcore2.macOS.xcarchive/Products/Frameworks/MailCore.framework" \
 	-framework "mailcore2.iOS-Simulator.xcarchive/Products/Frameworks/MailCore.framework" \
 	-framework "mailcore2.iOS.xcarchive/Products/Frameworks/MailCore.framework" \
 	-output "$FRAMEWORK_NAME"
@@ -61,6 +60,6 @@ xcodebuild -create-xcframework \
 # 	-output "$BUILD_DIR/mailcore2.xcframework"
 
 # Clean Up
-rm -rf "$BUILD_DIR/mailcore2.macOS.xcarchive"
+# rm -rf "$BUILD_DIR/mailcore2.macOS.xcarchive"  # Not built
 rm -rf "$BUILD_DIR/mailcore2.iOS-Simulator.xcarchive"
 rm -rf "$BUILD_DIR/mailcore2.iOS.xcarchive"
