@@ -1,0 +1,38 @@
+name: Build XCFramework with ARM64 Simulator
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    branches: [ arm64-simulator-support ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Build XCFramework
+      run: |
+        chmod +x build-arm64-xcframework.sh
+        ./build-arm64-xcframework.sh
+
+    - name: Upload XCFramework
+      uses: actions/upload-artifact@v3
+      with:
+        name: MailCore2-ARM64-Simulator
+        path: .build/MailCore2.xcframework
+
+    - name: Create Release (optional)
+      if: github.ref == 'refs/heads/arm64-simulator-support'
+      run: |
+        cd .build
+        zip -r MailCore2-ARM64.xcframework.zip MailCore2.xcframework
+
+    - name: Upload Release Asset (optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: MailCore2-ARM64-Release
+        path: .build/MailCore2-ARM64.xcframework.zip
