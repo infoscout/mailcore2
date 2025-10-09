@@ -24,14 +24,17 @@ xcodebuild archive -scheme "mailcore ios" \
     -destination "generic/platform=iOS" \
     -archivePath "$BUILD_DIR/mailcore2.iOS.xcarchive" \
     -sdk iphoneos \
+    ARCHS="arm64" \
+    IPHONEOS_DEPLOYMENT_TARGET="16.0" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
-# Build iOS Simulator Archive
+# Build iOS Simulator Archive (arm64 only - pre-built dependencies don't include x86_64)
 xcodebuild archive -scheme "mailcore ios" \
     -archivePath "$BUILD_DIR/mailcore2.iOS-Simulator.xcarchive" \
     -sdk iphonesimulator \
-    ARCHS="x86_64 arm64" \
+    ARCHS="arm64" \
+    IPHONEOS_DEPLOYMENT_TARGET="16.0" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
