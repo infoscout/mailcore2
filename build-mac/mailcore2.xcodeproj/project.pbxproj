@@ -4119,6 +4119,17 @@
 					"-ObjC",
 					"-lresolv",
 				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"-lctemplate-ios-sim",
+					"-letpan-ios-sim",
+					"-lxml2",
+					"-lsasl2-sim",
+					"-liconv",
+					"-ltidy-sim",
+					"-lz",
+					"-ObjC",
+					"-lresolv",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.libmailcore.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = MailCore;
 				SDKROOT = iphoneos;
@@ -4150,6 +4161,17 @@
 					"-lsasl2",
 					"-liconv",
 					"-ltidy",
+					"-lz",
+					"-ObjC",
+					"-lresolv",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"-lctemplate-ios-sim",
+					"-letpan-ios-sim",
+					"-lxml2",
+					"-lsasl2-sim",
+					"-liconv",
+					"-ltidy-sim",
 					"-lz",
 					"-ObjC",
 					"-lresolv",
@@ -4522,6 +4544,28 @@
 				ENABLE_BITCODE = YES;
 				EXECUTABLE_PREFIX = lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = (
+					"-lctemplate-ios",
+					"-letpan-ios",
+					"-lxml2",
+					"-lsasl2",
+					"-liconv",
+					"-ltidy",
+					"-lz",
+					"-ObjC",
+					"-lresolv",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"-lctemplate-ios-sim",
+					"-letpan-ios-sim",
+					"-lxml2",
+					"-lsasl2-sim",
+					"-liconv",
+					"-ltidy-sim",
+					"-lz",
+					"-ObjC",
+					"-lresolv",
+				);
 				PRODUCT_NAME = "MailCore-ios";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4536,6 +4580,28 @@
 				ENABLE_BITCODE = YES;
 				EXECUTABLE_PREFIX = lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = (
+					"-lctemplate-ios",
+					"-letpan-ios",
+					"-lxml2",
+					"-lsasl2",
+					"-liconv",
+					"-ltidy",
+					"-lz",
+					"-ObjC",
+					"-lresolv",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"-lctemplate-ios-sim",
+					"-letpan-ios-sim",
+					"-lxml2",
+					"-lsasl2-sim",
+					"-liconv",
+					"-ltidy-sim",
+					"-lz",
+					"-ObjC",
+					"-lresolv",
+				);
 				PRODUCT_NAME = "MailCore-ios";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
